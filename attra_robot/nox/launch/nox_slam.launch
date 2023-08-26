@@ -1,0 +1,9 @@
+<launch>
+					<!--  ************** gmapping ***************  -->
+	<node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
+		<param name="scan" type="string" value="scan" />
+	</node>
+
+				<!--  ************* Visualisation **************  -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find nox)/cfg/rviz_attra_navigation.rviz" required="true" />
+</launch>

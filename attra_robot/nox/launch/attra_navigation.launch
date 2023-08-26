@@ -1,0 +1,12 @@
+<launch>
+	<!-- <arg name="map_file" default="$(find nox)/map/attra_lab_map.yaml"/> -->
+	<arg name="map_file" default="$(find nox)/map/10th_IE_building.yaml"/>
+	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+	
+	<include file="$(find nox)/launch/nox_navigation.launch" />
+	
+	<!--include file="$(find nox)/launch/amcl_pi.launch" /-->
+	<include file="$(find nox)/launch/als_mcl.launch" />
+	
+
+</launch>

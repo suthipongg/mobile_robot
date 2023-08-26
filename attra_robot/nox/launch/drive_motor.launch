@@ -1,0 +1,15 @@
+<launch>
+
+	<node name="drive_motor" pkg="nox" type="drive_motor">
+        <param name="SampleTime_left" value="95" />
+        <param name="SampleTime_right" value="95" />
+        <param name="max_speed" value="0.4" />
+        <param name="kp_l" value="0.8" />
+        <param name="ki_l" value="0.2" />
+        <param name="kd_l" value="0" />
+        <param name="kp_r" value="1.1" />
+        <param name="ki_r" value="0.3" />
+        <param name="kd_r" value="0" />
+    </node>
+
+</launch>

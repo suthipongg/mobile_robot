@@ -1,0 +1,34 @@
+<launch>
+				<!--  ************** Odometry ***************  -->
+	<arg name="gui" default="True" />
+	<param name="use_gui" value="$(arg gui)"/>
+	<param name="robot_description" command="cat $(find nox_description)/urdf/nox.urdf" />
+
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+	<node name="drive_motor" pkg="nox" type="drive_motor">
+        <param name="SampleTime_left" value="95" />
+        <param name="SampleTime_right" value="95" />
+        <param name="max_speed" value="0.4" />
+        <param name="kp_l" value="0.8" />
+        <param name="ki_l" value="0.2" />
+        <param name="kd_l" value="0" />
+        <param name="kp_r" value="1.1" />
+        <param name="ki_r" value="0.3" />
+        <param name="kd_r" value="0" />
+    </node>
+		
+	<node name="nox_controller" pkg="nox" type="nox_controller">
+		<param name="publish_tf" value="true" />
+    		<param name="publish_rate" value="10.0" />
+    		<param name="linear_scale_positive" value="1" />
+    		<param name="linear_scale_negative" value="1" />
+    		<param name="angular_scale_positive" value="0.99" />
+    		<param name="angular_scale_negative" value="1.0" />
+		<param name="angular_scale_accel" value="0" />
+	</node>	
+	
+	<include file="$(find rplidar_ros)/launch/rplidar_s2.launch" />
+
+</launch>
